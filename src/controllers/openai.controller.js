@@ -12,7 +12,7 @@ const feedbackSuggest = async (req, res) => {
     const requestMessages = [
       {
         role: 'user',
-        content: `Crear un feedback para una evaluación de desempeño para ${userName}, su principal fortaleza ${strength} y una oportunidad de mejora ${opportunity}.`,
+        content: `Crear un feedback para una evaluación de desempeño para ${userName}, su principal fortaleza ${strength} y una oportunidad de mejora ${opportunity}, separar el feedback de la fortaleza de la oportunidad de mejora`,
       },
     ]
     const apiRequestBody = {
