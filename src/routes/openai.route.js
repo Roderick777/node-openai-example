@@ -3,21 +3,18 @@ const router = express.Router()
 const { Configuration, OpenAIApi } = require('openai')
 const { OpenaiMiddleware } = require('../middleware/openai.middleware')
 const dotenv = require('dotenv')
-
 dotenv.config()
 
 const configuration = new Configuration({ apiKey: process.env.OPENAI_API_KEY })
 const openai = new OpenAIApi(configuration)
 const prompt = `Assistant`
 
-router.get('/', OpenaiMiddleware, async (req, res) => {
-  // const requestMessages = req.body.messages
-
+router.post('/', OpenaiMiddleware, async (req, res) => {
+  const { userName, strength, opportunity } = req.body
   const requestMessages = [
     {
       role: 'user',
-      content:
-        'Crear un feedback para una evaluación de desempeño para Juan Pérez, su principal fortaleza es su eficiencia y una oportunidad de mejora es la puntualidad.',
+      content: `Crear un feedback para una evaluación de desempeño para ${userName}, su principal fortaleza ${strength} y una oportunidad de mejora ${opportunity}.`,
     },
   ]
 
